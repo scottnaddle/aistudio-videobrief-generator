@@ -1,4 +1,3 @@
-
 export type AppStep = 'upload' | 'style' | 'brief';
 
 export interface ContentAnalysis {
@@ -29,6 +28,7 @@ export interface Script {
 export interface Visuals {
     description: string;
     graphicsNeeded: string[];
+    imageBase64: string;
 }
 
 export interface Audio {

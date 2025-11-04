@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import type { ContentAnalysis, VideoStyle, VideoBrief } from '../types';
 
@@ -7,6 +6,30 @@ if (!process.env.API_KEY) {
 }
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
+async function generateImage(prompt: string): Promise<string> {
+    try {
+        const fullPrompt = `교육용 비디오 슬라이드를 위한 전문적이고 시네마틱한 스톡 이미지 스타일의 사진: ${prompt}`;
+        const response = await ai.models.generateImages({
+            model: 'imagen-4.0-generate-001',
+            prompt: fullPrompt,
+            config: {
+              numberOfImages: 1,
+              outputMimeType: 'image/jpeg',
+              aspectRatio: '16:9',
+            },
+        });
+
+        if (response.generatedImages && response.generatedImages.length > 0) {
+            return response.generatedImages[0].image.imageBytes;
+        }
+        throw new Error("Image generation returned no images.");
+    } catch (error) {
+        console.error("Image generation failed for prompt:", prompt, error);
+        throw new Error(`이미지 생성 실패: ${prompt}`);
+    }
+}
+
 
 export async function analyzeContent(manuscriptText: string): Promise<ContentAnalysis> {
     const response = await ai.models.generateContent({
@@ -107,5 +130,20 @@ export async function generateBrief(analysis: ContentAnalysis, style: VideoStyle
     });
 
     const jsonText = response.text.trim();
-    return JSON.parse(jsonText) as VideoBrief;
+    const briefData = JSON.parse(jsonText) as VideoBrief;
+
+    const briefWithImages = await Promise.all(
+        briefData.map(async (slide) => {
+            const imageBase64 = await generateImage(slide.visuals.description);
+            return {
+                ...slide,
+                visuals: {
+                    ...slide.visuals,
+                    imageBase64,
+                },
+            };
+        })
+    );
+
+    return briefWithImages;
 }

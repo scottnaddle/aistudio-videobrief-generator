@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import type { VideoBrief, VideoBriefSlide } from '../types';
 
@@ -86,6 +85,14 @@ export const Slide: React.FC<SlideProps> = ({ slide, index, setBrief }) => {
                 {/* Visuals */}
                 <div className="bg-base-300/50 p-4 rounded-lg">
                     <h4 className="font-semibold text-brand-light mb-3">🎨 시각 자료</h4>
+                    {slide.visuals.imageBase64 && (
+                        <img 
+                            src={`data:image/jpeg;base64,${slide.visuals.imageBase64}`} 
+                            alt={slide.visuals.description}
+                            className="w-full rounded-md mb-4 aspect-video object-cover border-2 border-base-100 shadow-md"
+                            aria-label="생성된 슬라이드 스크린샷"
+                        />
+                    )}
                      <div className="space-y-3 text-sm text-text-secondary">
                         <strong className="text-text-primary">설명:</strong>
                         <EditableField value={slide.visuals.description} onSave={(val) => handleUpdate('visuals.description', val)} isTextArea />

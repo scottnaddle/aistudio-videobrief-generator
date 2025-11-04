@@ -1,0 +1,5 @@
+{
+  "name": "EduBrief Agent",
+  "description": "An AI agent that transforms book manuscripts into comprehensive educational video briefs through a three-step conversational process, automating the entire pre-production planning.",
+  "requestFramePermissions": []
+}

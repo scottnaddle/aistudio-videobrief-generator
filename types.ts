@@ -9,15 +9,15 @@ export interface ContentAnalysis {
         keyConcepts: string[];
     }[];
     targetAudience: string;
-    difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+    difficulty: '초급자' | '중급자' | '고급자';
     estimatedTime: number;
 }
 
 export interface VideoStyle {
-    format: 'Lecture' | 'Animation' | 'Hybrid';
-    tone: 'Professional' | 'Friendly' | 'Humorous';
-    visualStyle: 'Charts & Diagrams' | 'Live Action Examples' | 'Minimalist Text';
-    platform: 'YouTube' | 'Instagram Reels' | 'Corporate Training';
+    format: '강의' | '애니메이션' | '하이브리드';
+    tone: '전문적' | '친근함' | '유머러스';
+    visualStyle: '차트 & 다이어그램' | '실사 예시' | '미니멀 텍스트';
+    platform: '유튜브' | '인스타그램 릴스' | '기업 교육';
 }
 
 export interface Script {

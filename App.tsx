@@ -27,7 +27,7 @@ const App: React.FC = () => {
             setAnalysis(result);
             setStep('style');
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'An unknown error occurred during analysis.');
+            setError(err instanceof Error ? err.message : '분석 중 알 수 없는 오류가 발생했습니다.');
             console.error(err);
         } finally {
             setIsLoading(false);
@@ -36,7 +36,7 @@ const App: React.FC = () => {
 
     const handleGenerateBrief = useCallback(async (style: VideoStyle) => {
         if (!analysis) {
-            setError('Content analysis is missing.');
+            setError('콘텐츠 분석이 누락되었습니다.');
             return;
         }
         setVideoStyle(style);
@@ -47,7 +47,7 @@ const App: React.FC = () => {
             setBrief(result);
             setStep('brief');
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'An unknown error occurred while generating the brief.');
+            setError(err instanceof Error ? err.message : '브리프 생성 중 알 수 없는 오류가 발생했습니다.');
             console.error(err);
         } finally {
             setIsLoading(false);
@@ -71,10 +71,10 @@ const App: React.FC = () => {
         if (error) {
             return (
                 <div className="text-center p-8 bg-red-900/20 border border-red-500 rounded-lg">
-                    <h3 className="text-xl font-bold text-red-400">An Error Occurred</h3>
+                    <h3 className="text-xl font-bold text-red-400">오류가 발생했습니다</h3>
                     <p className="mt-2 text-red-300">{error}</p>
                     <button onClick={handleReset} className="mt-6 bg-brand-primary hover:bg-brand-secondary text-white font-bold py-2 px-4 rounded-lg transition-colors">
-                        Start Over
+                        다시 시작
                     </button>
                 </div>
             );

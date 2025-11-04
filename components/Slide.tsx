@@ -35,8 +35,8 @@ const EditableField: React.FC<{ value: string; onSave: (newValue: string) => voi
                         className="w-full p-2 bg-base-100 border border-brand-primary rounded-md text-text-primary"
                     />
                 )}
-                <button onClick={handleSave} className="mt-2 px-3 py-1 bg-brand-primary text-white text-sm rounded hover:bg-brand-secondary">Save</button>
-                <button onClick={() => setIsEditing(false)} className="mt-2 ml-2 px-3 py-1 bg-base-300 text-text-primary text-sm rounded hover:bg-base-100">Cancel</button>
+                <button onClick={handleSave} className="mt-2 px-3 py-1 bg-brand-primary text-white text-sm rounded hover:bg-brand-secondary">저장</button>
+                <button onClick={() => setIsEditing(false)} className="mt-2 ml-2 px-3 py-1 bg-base-300 text-text-primary text-sm rounded hover:bg-base-100">취소</button>
             </div>
         );
     }
@@ -74,35 +74,35 @@ export const Slide: React.FC<SlideProps> = ({ slide, index, setBrief }) => {
             <div className="grid md:grid-cols-3 gap-6">
                 {/* Script */}
                 <div className="bg-base-300/50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-brand-light mb-3">📝 Script</h4>
+                    <h4 className="font-semibold text-brand-light mb-3">📝 스크립트</h4>
                     <div className="space-y-3 text-sm text-text-secondary">
-                        <strong className="text-text-primary">Narration:</strong>
+                        <strong className="text-text-primary">내레이션:</strong>
                         <EditableField value={slide.script.narration} onSave={(val) => handleUpdate('script.narration', val)} isTextArea />
-                        <strong className="text-text-primary">On-screen Text:</strong>
+                        <strong className="text-text-primary">화면 텍스트:</strong>
                         <EditableField value={slide.script.onScreenText} onSave={(val) => handleUpdate('script.onScreenText', val)} isTextArea />
                     </div>
                 </div>
 
                 {/* Visuals */}
                 <div className="bg-base-300/50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-brand-light mb-3">🎨 Visuals</h4>
+                    <h4 className="font-semibold text-brand-light mb-3">🎨 시각 자료</h4>
                      <div className="space-y-3 text-sm text-text-secondary">
-                        <strong className="text-text-primary">Description:</strong>
+                        <strong className="text-text-primary">설명:</strong>
                         <EditableField value={slide.visuals.description} onSave={(val) => handleUpdate('visuals.description', val)} isTextArea />
-                        <strong className="text-text-primary">Graphics Needed:</strong>
+                        <strong className="text-text-primary">필요한 그래픽:</strong>
                         <EditableField value={slide.visuals.graphicsNeeded.join(', ')} onSave={(val) => handleUpdate('visuals.graphicsNeeded', val.split(',').map(s=>s.trim()))} />
                     </div>
                 </div>
 
                 {/* Audio */}
                 <div className="bg-base-300/50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-brand-light mb-3">🔊 Audio</h4>
+                    <h4 className="font-semibold text-brand-light mb-3">🔊 오디오</h4>
                     <div className="space-y-3 text-sm text-text-secondary">
-                        <strong className="text-text-primary">Narration Style:</strong>
+                        <strong className="text-text-primary">내레이션 스타일:</strong>
                         <EditableField value={slide.audio.narrationStyle} onSave={(val) => handleUpdate('audio.narrationStyle', val)} />
-                        <strong className="text-text-primary">Background Music:</strong>
+                        <strong className="text-text-primary">배경 음악:</strong>
                         <EditableField value={slide.audio.backgroundMusic} onSave={(val) => handleUpdate('audio.backgroundMusic', val)} />
-                        <strong className="text-text-primary">Sound Effects:</strong>
+                        <strong className="text-text-primary">음향 효과:</strong>
                         <EditableField value={slide.audio.soundEffects.join(', ')} onSave={(val) => handleUpdate('audio.soundEffects', val.split(',').map(s=>s.trim()))} />
                     </div>
                 </div>

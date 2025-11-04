@@ -10,9 +10,9 @@ interface StepIndicatorProps {
 }
 
 const steps = [
-    { id: 'upload', name: '1. Analyze Content', icon: BookOpenIcon },
-    { id: 'style', name: '2. Define Style', icon: ClapperboardIcon },
-    { id: 'brief', name: '3. Generate Brief', icon: FilmIcon },
+    { id: 'upload', name: '1. 콘텐츠 분석', icon: BookOpenIcon },
+    { id: 'style', name: '2. 스타일 정의', icon: ClapperboardIcon },
+    { id: 'brief', name: '3. 브리프 생성', icon: FilmIcon },
 ];
 
 export const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {

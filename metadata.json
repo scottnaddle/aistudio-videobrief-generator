@@ -1,5 +1,5 @@
 {
-  "name": "EduBrief Agent",
-  "description": "An AI agent that transforms book manuscripts into comprehensive educational video briefs through a three-step conversational process, automating the entire pre-production planning.",
+  "name": "에듀브리프 에이전트",
+  "description": "세 단계의 대화형 프로세스를 통해 책 원고를 종합적인 교육용 비디오 브리프로 변환하여 전체 사전 제작 계획을 자동화하는 AI 에이전트입니다.",
   "requestFramePermissions": []
 }
